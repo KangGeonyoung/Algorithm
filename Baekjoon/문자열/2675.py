@@ -12,6 +12,7 @@ for i in range(T) :
     output = ""
     # word의 digit 만큼 반복
     for j in range(len(case[i][1])) :
+        # 반복 횟수 만큼 반복
         for k in range(int(case[i][0])) :
             output += case[i][1][j]
     result[i] = output
