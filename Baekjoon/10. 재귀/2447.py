@@ -1,20 +1,37 @@
-def blank(n) :
-    if n == 1 :
-        print(" ", end='')
-        return 0
-    
-    return blank(n/3)
+from cmath import sqrt
 
-def line() :
+
+N = int(input())
+row = 0
+col = 0
+
+starList = [["*" for j in range(N)] for i in range(N)]
+
+for i in range(N) :
+    for j in range(N) :
+        print(starList[i][j], end='')
     print()
-    return 0
+    
+print()
 
-def star(n) :
-    if n == 1 :
-        print("*", end='')
-        return 0
+def eraseStar(n) :
+    row = int(n / 3)
+    col = int(n / 3)
 
-    return star(n/3) + star(n/3) + star(n/3) + line() + star(n/3) + blank(n/3) + star(n/3) + line() + star(n/3) + star(n/3) + star(n/3)
+    for m in range(int(N/n) * int(N/n)) :
+        count = 0
+        for i in range(int(n/3)) :
+            for j in range(int(n/3)) :
+                starList[row][col] = " "
+                col += 1
+                count += 1
+            row += 1
+            col -= int(n/3)
+    eraseStar(n/3)
 
+eraseStar(N)
 
-print(star(9))
+for i in range(N) :
+    for j in range(N) :
+        print(starList[i][j], end='')
+    print()
