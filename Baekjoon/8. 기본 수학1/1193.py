@@ -1,3 +1,4 @@
+# 시간초과 난 코드
 input = int(input())
 X = 0
 Y = 0
