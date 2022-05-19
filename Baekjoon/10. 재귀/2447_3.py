@@ -1,3 +1,4 @@
+# 통과된 코드
 def drawStar(n) :
     if n == 1 :
         return ['*']
