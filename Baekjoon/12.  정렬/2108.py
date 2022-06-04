@@ -1,6 +1,5 @@
-import math
-from pyexpat import model
 import sys
+from typing import Counter
 
 N = int(sys.stdin.readline())
 numList = []
@@ -8,25 +7,31 @@ numList = []
 for i in range(N) :
     numList.append(int(sys.stdin.readline()))
 
-newNum = sorted(numList)
+ascNum = sorted(numList)
 
+# 산술평균, 중앙값
 avg = sum(numList) / len(numList)
-median = newNum[len(newNum) // 2]
+median = ascNum[len(ascNum) // 2]
 
-Max = max(numList)
-Min = min(numList)
-Range = Max - Min
+# 범위
+Range = ascNum[-1] - ascNum[0]
 
-modeList = [0] * N
+# 최빈값
+mode = 0
+modeArr = Counter(ascNum).most_common()
 
-for i in range(N) :
-    if modeList.count(numList[i]) == 0 :
-        modeList[i] += 1
+if len(modeArr) > 1 :
+    # 최빈값의 수가 같을 경우(두번 째 값 출력)
+    if modeArr[0][1] == modeArr[1][1] :
+        mode = modeArr[1][0]
+    # 같지 않을 경우(첫번 째 값 출력)
     else :
-        modeList[modeList.index(numList[i])] += 1
+        mode = modeArr[0][0]
+else :
+    mode = ascNum[0]
 
 
 print(round(avg))
 print(median)
+print(mode)
 print(Range)
-print(modeList)
