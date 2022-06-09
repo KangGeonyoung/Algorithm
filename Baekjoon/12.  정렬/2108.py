@@ -17,6 +17,10 @@ median = ascNum[len(ascNum) // 2]
 Range = ascNum[-1] - ascNum[0]
 
 # 최빈값
+# Counter 클래스를 이용하면 매우 편리하다.
+# Counter(변수) => 변수 속에서 등장하는 매개들의 개수를 세어 dictionary로 나타내어 return 한다.
+# Counter(변수).most_common() => 위와 비슷하지만 추가적으로 데이터의 개수가 많은 순으로 정렬된 dictionary를 return 한다.
+
 mode = 0
 modeArr = Counter(ascNum).most_common()
 
