@@ -8,6 +8,7 @@ count = 0
 for i in range(P) :
     playerX, playerY = map(int, sys.stdin.readline().split())
 
+    # 직사각형 내에서 검색
     if X <= playerX and playerX <= X + W :
         if Y <= playerY and playerY <= Y + H :
             count += 1
@@ -15,12 +16,12 @@ for i in range(P) :
     
     radius = H / 2
 
-    # 왼쪽 원의 방정식으로 비교
+    # 왼쪽 원 내에서 검색
     if math.pow(playerX-X, 2) + math.pow(playerY - (Y + radius), 2) <= math.pow(radius, 2) :
         count += 1
         continue
 
-    # 오른쪽 원의 방정식으로 비교
+    # 오른쪽 원 내에서 검색
     if math.pow(playerX - (X + W), 2) + math.pow(playerY - (Y + radius), 2) <= math.pow(radius, 2) :
         count += 1
         continue
