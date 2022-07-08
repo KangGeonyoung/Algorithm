@@ -1,3 +1,5 @@
+# 중복 없이 오름차순 (= 수열 자체가 오름차순이어야 함.)
+
 import sys
 
 def sequence(origin, present, M) :

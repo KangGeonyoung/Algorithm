@@ -1,3 +1,6 @@
+# 같은 수가 중복으로 들어가도 됨
+# 수열은 사전 순
+
 import sys
 
 def sequence(origin, present, M) :

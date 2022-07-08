@@ -1,3 +1,5 @@
+# 중복 없이 사전 순 (= 제일 앞만 정렬되면 됨)
+
 import sys
 
 def sequence(origin, present, M) :
