@@ -1,5 +1,5 @@
+import copy
 import sys
-
 
 def promissing(x) :
     for i in range(x) :
@@ -13,6 +13,7 @@ def promissing(x) :
 def nQueen(row) :
     global result
 
+
     # row 깊이가 N까지 갔다면 퀸을 모두 다 놓은 것임
     if row == N :
         result += 1
@@ -23,7 +24,7 @@ def nQueen(row) :
             if promissing(row) :
                 nQueen(row + 1)
 
-
+    
 N = int(sys.stdin.readline())
 result = 0
 board = [0] * N
