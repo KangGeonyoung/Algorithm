@@ -1,49 +1,32 @@
 import sys
 
-def N_queen(x, y) :
-    global queenCnt, result, chess
 
-    print(f"n_queen {x}, {y}")
-    # 퀸을 체스판에 놓았기 때문에 queenCnt +1 해주기
-    queenCnt += 1
+def promissing(x) :
+    for i in range(x) :
+        # 퀸을 놓을 수 없는 조건
+        # 조건 1 : 같은 col에 있을 때 
+        # 조건 2 : row 차이 = col 차이라면 같은 대각선 상에 위치하는 것
+        if board[x] == board[i] or abs(board[x]-board[i]) == abs(x-i) :
+            return 0
+    return 1
 
-    # x, y 자리의 값을 0으로 변환
-    chess[x][y] = 0
+def nQueen(row) :
+    global result
 
-    # x, y값에 해당하는 row, col의 값을 0으로 변환
-    for i in range(N) :
-        chess[x][i] = 0
-        chess[i][y] = 0
-    
-    # 대각선 0으로 변환
-    for i in range(N) :
-        for j in range(N) :
-            if (i+j) == (x+y) or abs(i-j) == abs(x-y) :
-                chess[i][j] = 0
-
-            # if chess[i][j] == (x+y) or chess[i][j] == abs(x-y) :
-            #     chess[i][j] = 0
-
-    # 퀸을 체스판에 다 놓았다면 경우의 수(result) 증가 시키기
-    if queenCnt == N :
+    # row 깊이가 N까지 갔다면 퀸을 모두 다 놓은 것임
+    if row == N :
         result += 1
-        queenCnt = 0
-        return 0
-
-    # 다음 퀸 자리 찾는 과정
-    for i in range(N) :
-        for j in range(N) :
-            if chess[i][j] == 1 :
-                N_queen(i, j)
+        return
+    else :
+        for i in range(N) :
+            board[row] = i
+            if promissing(row) :
+                nQueen(row + 1)
 
 
 N = int(sys.stdin.readline())
 result = 0
-queenCnt = 0
-chess = [[1 for col in range(N)] for row in range(N)]
+board = [0] * N
 
-for i in range(N) :
-    for j in range(N) :
-            N_queen(i, j)
-
+nQueen(0)
 print(result)
