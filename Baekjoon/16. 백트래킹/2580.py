@@ -1,3 +1,5 @@
+# pypy3로 제출해야 통과됨
+# row, col, 사각형 3가지 방법에 모든 숫자를 넣어서 True가 나오는지 검사 
 import sys
 
 def checkRow(y, a) :
